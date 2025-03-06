@@ -58,26 +58,3 @@ impl Person {
         origin_v.angle_between(&delta_v)
     }
 }
-
-#[cfg(test)]
-mod tests {
-    use std::{fs::File, io::Read};
-
-    use crate::PoseData;
-
-    #[test]
-    fn loading_soldering_example() {
-        let mut buf = String::new();
-        let mut file = File::open("files/soldering.json").expect("Load Soldering");
-        file.read_to_string(&mut buf).expect("Read to buf");
-
-        let pose: PoseData = serde_json::from_str(&buf).expect("Failed to parse");
-        panic!(
-            "{:?}",
-            (
-                pose.people[0].angle_right_wrist(),
-                pose.people[0].angle_left_wrist()
-            )
-        );
-    }
-}
