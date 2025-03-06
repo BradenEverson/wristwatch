@@ -1,6 +1,6 @@
 //! Hand pose implementation
 
-use crate::{Person, Point};
+use crate::{Person, math::Point};
 
 pub const HAND_WRIST: usize = 0 * 3;
 pub const THUMB_BASE: usize = 1 * 3;

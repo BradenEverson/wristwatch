@@ -1,6 +1,6 @@
 //! Body mapping functions
 
-use crate::{Person, Point};
+use crate::{Person, math::Point};
 
 pub const CENTER_FACE: usize = 0 * 3;
 pub const RIGHT_EYE: usize = 15 * 3;
