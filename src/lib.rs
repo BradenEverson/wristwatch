@@ -25,6 +25,16 @@ pub struct Person {
     hand_right_keypoints_3d: Vec<f32>,
 }
 
+impl Person {
+    pub fn angle_left_wrist() -> f32 {
+        todo!()
+    }
+
+    pub fn angle_right_wrist() -> f32 {
+        todo!()
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use std::{fs::File, io::Read};
