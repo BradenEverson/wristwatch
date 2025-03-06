@@ -25,13 +25,67 @@ pub struct Person {
     hand_right_keypoints_3d: Vec<f32>,
 }
 
-impl Person {
-    pub fn angle_left_wrist() -> f32 {
-        todo!()
+#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
+pub struct Point(pub f32, pub f32);
+
+#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
+pub struct Vector(pub f32, pub f32);
+
+impl Vector {
+    pub fn dot(&self, rhs: &Self) -> f32 {
+        self.0 * rhs.0 + self.1 * rhs.1
     }
 
-    pub fn angle_right_wrist() -> f32 {
-        todo!()
+    pub fn mag(&self) -> f32 {
+        let Vector(x, y) = self;
+        f32::sqrt((x * x) + (y * y))
+    }
+
+    pub fn angle_between(&self, other: &Self) -> f32 {
+        let inner = self.dot(other) / (self.mag() * other.mag());
+        f32::acos(inner)
+    }
+}
+
+#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
+pub struct LineSegment(pub Point, pub Point);
+
+impl LineSegment {
+    pub fn vector(self) -> Vector {
+        let LineSegment(Point(x1, y1), Point(x2, y2)) = self;
+        Vector(x2 - x1, y2 - y1)
+    }
+}
+
+impl Person {
+    pub fn angle_left_wrist(&self) -> f32 {
+        let elbow = self.get_left_elbow();
+        let wrist = self.get_left_wrist();
+
+        let middle_base = self.get_middle_base_left();
+
+        let origin = LineSegment(elbow, wrist);
+        let delta = LineSegment(wrist, middle_base);
+
+        let origin_v = origin.vector();
+        let delta_v = delta.vector();
+
+        origin_v.angle_between(&delta_v)
+    }
+
+    pub fn angle_right_wrist(&self) -> f32 {
+        let elbow = self.get_right_elbow();
+        let wrist = self.get_right_wrist();
+
+        let middle_base = self.get_middle_base_right();
+
+        let origin = LineSegment(elbow, wrist);
+        let delta = LineSegment(wrist, middle_base);
+
+        let origin_v = origin.vector();
+        let delta_v = delta.vector();
+
+        origin_v.angle_between(&delta_v)
     }
 }
 
@@ -48,6 +102,12 @@ mod tests {
         file.read_to_string(&mut buf).expect("Read to buf");
 
         let pose: PoseData = serde_json::from_str(&buf).expect("Failed to parse");
-        panic!("{pose:?}")
+        panic!(
+            "{:?}",
+            (
+                pose.people[0].angle_right_wrist(),
+                pose.people[0].angle_left_wrist()
+            )
+        );
     }
 }
