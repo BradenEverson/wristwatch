@@ -7,21 +7,21 @@ pub mod math;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PoseData {
-    version: f32,
-    people: Vec<Person>,
+    pub version: f32,
+    pub people: Vec<Person>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Person {
-    person_id: Vec<i32>,
-    pose_keypoints_2d: Vec<f32>,
-    face_keypoints_2d: Vec<f32>,
-    hand_left_keypoints_2d: Vec<f32>,
-    hand_right_keypoints_2d: Vec<f32>,
-    pose_keypoints_3d: Vec<f32>,
-    face_keypoints_3d: Vec<f32>,
-    hand_left_keypoints_3d: Vec<f32>,
-    hand_right_keypoints_3d: Vec<f32>,
+    pub person_id: Vec<i32>,
+    pub pose_keypoints_2d: Vec<f32>,
+    pub face_keypoints_2d: Vec<f32>,
+    pub hand_left_keypoints_2d: Vec<f32>,
+    pub hand_right_keypoints_2d: Vec<f32>,
+    pub pose_keypoints_3d: Vec<f32>,
+    pub face_keypoints_3d: Vec<f32>,
+    pub hand_left_keypoints_3d: Vec<f32>,
+    pub hand_right_keypoints_3d: Vec<f32>,
 }
 
 impl Person {
