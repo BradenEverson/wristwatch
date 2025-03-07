@@ -1,4 +1,4 @@
-use math::LineSegment;
+use math::{LineSegment, Point};
 use serde::{Deserialize, Serialize};
 
 pub mod body;
@@ -29,10 +29,21 @@ impl Person {
         let elbow = self.get_left_elbow();
         let wrist = self.get_left_wrist();
 
-        let middle_base = self.get_middle_base_left();
+        let wrist_base = {
+            let Point(tx, ty) = self.get_thumb_base_left();
+            let Point(ix, iy) = self.get_index_base_left();
+            let Point(mx, my) = self.get_middle_base_left();
+            let Point(rx, ry) = self.get_ring_base_left();
+            let Point(px, py) = self.get_pinky_base_left();
+
+            Point(
+                (tx + ix + mx + rx + px) / 5.0,
+                (ty + iy + my + ry + py) / 5.0,
+            )
+        };
 
         let origin = LineSegment(elbow, wrist);
-        let delta = LineSegment(wrist, middle_base);
+        let delta = LineSegment(wrist, wrist_base);
 
         let origin_v = origin.vector();
         let delta_v = delta.vector();
@@ -44,10 +55,21 @@ impl Person {
         let elbow = self.get_right_elbow();
         let wrist = self.get_right_wrist();
 
-        let middle_base = self.get_middle_base_right();
+        let wrist_base = {
+            let Point(tx, ty) = self.get_thumb_base_right();
+            let Point(ix, iy) = self.get_index_base_right();
+            let Point(mx, my) = self.get_middle_base_right();
+            let Point(rx, ry) = self.get_ring_base_right();
+            let Point(px, py) = self.get_pinky_base_right();
+
+            Point(
+                (tx + ix + mx + rx + px) / 5.0,
+                (ty + iy + my + ry + py) / 5.0,
+            )
+        };
 
         let origin = LineSegment(elbow, wrist);
-        let delta = LineSegment(wrist, middle_base);
+        let delta = LineSegment(wrist, wrist_base);
 
         let origin_v = origin.vector();
         let delta_v = delta.vector();
