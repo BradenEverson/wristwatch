@@ -3,24 +3,32 @@
 use crate::{Person, math::Point};
 
 pub const CENTER_FACE: usize = 0 * 3;
+
 pub const RIGHT_EYE: usize = 15 * 3;
 pub const RIGHT_EAR: usize = 17 * 3;
+
 pub const LEFT_EYE: usize = 16 * 3;
 pub const LEFT_EAR: usize = 18 * 3;
+
 pub const STERNUM: usize = 1 * 3;
+
 pub const RIGHT_SHOULDER: usize = 2 * 3;
 pub const RIGHT_ELBOW: usize = 3 * 3;
 pub const RIGHT_WRIST: usize = 4 * 3;
+
 pub const LEFT_SHOULDER: usize = 5 * 3;
 pub const LEFT_ELBOW: usize = 6 * 3;
 pub const LEFT_WRIST: usize = 7 * 3;
+
 pub const PELVIS: usize = 8 * 3;
+
 pub const LEFT_HIP: usize = 12 * 3;
 pub const LEFT_KNEE: usize = 13 * 3;
 pub const LEFT_ANKLE: usize = 14 * 3;
 pub const LEFT_HEEL: usize = 21 * 3;
 pub const LEFT_FOOT: usize = 19 * 3;
 pub const LEFT_TOES: usize = 20 * 3;
+
 pub const RIGHT_HIP: usize = 9 * 3;
 pub const RIGHT_KNEE: usize = 10 * 3;
 pub const RIGHT_ANKLE: usize = 11 * 3;

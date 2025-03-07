@@ -3,22 +3,27 @@
 use crate::{Person, math::Point};
 
 pub const HAND_WRIST: usize = 0 * 3;
+
 pub const THUMB_BASE: usize = 1 * 3;
 pub const THUMB_MIDDLE: usize = 2 * 3;
 pub const THUMB_UPPER: usize = 3 * 3;
 pub const THUMB_TIP: usize = 4 * 3;
+
 pub const INDEX_BASE: usize = 5 * 3;
 pub const INDEX_MIDDLE: usize = 6 * 3;
 pub const INDEX_UPPER: usize = 7 * 3;
 pub const INDEX_TIP: usize = 8 * 3;
+
 pub const MIDDLE_BASE: usize = 9 * 3;
 pub const MIDDLE_MIDDLE: usize = 10 * 3;
 pub const MIDDLE_UPPER: usize = 11 * 3;
 pub const MIDDLE_TIP: usize = 12 * 3;
+
 pub const RING_BASE: usize = 13 * 3;
 pub const RING_MIDDLE: usize = 14 * 3;
 pub const RING_UPPER: usize = 15 * 3;
 pub const RING_TIP: usize = 16 * 3;
+
 pub const PINKY_BASE: usize = 17 * 3;
 pub const PINKY_MIDDLE: usize = 18 * 3;
 pub const PINKY_UPPER: usize = 19 * 3;
