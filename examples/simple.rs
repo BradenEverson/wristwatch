@@ -7,7 +7,7 @@ use wristwatch::PoseData;
 
 fn main() {
     let mut buf = String::new();
-    let mut file = File::open("files/soldering.json").expect("Load Soldering");
+    let mut file = File::open("files/straight.json").expect("Load Soldering");
     file.read_to_string(&mut buf).expect("Read to buf");
 
     let pose: PoseData = serde_json::from_str(&buf).expect("Failed to parse");
